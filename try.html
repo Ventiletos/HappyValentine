@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Funny Question</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 100px;
+            background: linear-gradient(to right, #ff758c, #ff7eb3);
+            color: white;
+        }
+        h1 {
+            font-size: 2.5em;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+        }
+        button {
+            font-size: 1.2em;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        button:hover {
+            transform: scale(1.1);
+            box-shadow: 0px 0px 10px rgba(255, 255, 255, 0.6);
+        }
+        #yes-btn {
+            background-color: #4CAF50;
+            color: white;
+        }
+        #no-btn {
+            position: absolute;
+            background-color: #ff4d4d;
+            color: white;
+        }
+        #timer {
+            font-size: 1.5em;
+            margin-top: 20px;
+            font-weight: bold;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
+        }
+    </style>
+</head>
+<body>
+    <h1>Are you gay?</h1>
+    <button id="yes-btn" onclick="alert('Good choice!')">Yes</button>
+    <button id="no-btn" onmouseover="moveButton()">No</button>
+    <p id="timer"></p>
+
+    <script>
+        let timeLeft = 10;
+        function countdown() {
+            if (timeLeft > 0) {
+                document.getElementById('timer').innerText = `You have ${timeLeft} seconds to decide...`;
+                timeLeft--;
+                setTimeout(countdown, 1000);
+            } else {
+                document.body.innerHTML = '<h1 style="font-size: 3em; text-shadow: 3px 3px 10px rgba(0,0,0,0.5);">You are a fucking gay! AHHAHA</h1>';
+            }
+        }
+        countdown();
+
+        function moveButton() {
+            let button = document.getElementById("no-btn");
+            let x = Math.random() * (window.innerWidth - 100);
+            let y = Math.random() * (window.innerHeight - 50);
+            button.style.left = `${x}px`;
+            button.style.top = `${y}px`;
+        }
+    </script>
+</body>
+</html>
